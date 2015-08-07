@@ -2,7 +2,7 @@
 
 /*
  * Plugin Name: Bp Stickers
- * Version: 1.1
+ * Version: 1.2
  * Author: asghar hatampoor
  * Author URI: http://webcaffe.ir
  * Plugin URI: http://Webcaffe.ir
@@ -11,7 +11,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !defined( 'BPST_PLUGIN_VERSION' ) )
-	define( 'BPST_PLUGIN_VERSION', '1.1.0' );
+	define( 'BPST_PLUGIN_VERSION', '1.2.0' );
 
 if ( !defined( 'BPST_PLUGIN_DIRNAME' ) )
 	define( 'BPST_PLUGIN_DIRNAME', basename( dirname( __FILE__ ) ) );
@@ -33,7 +33,9 @@ class BpStickers{
       add_action('bp_before_activity_post_form',array($this,'list_stickers'));  
       add_action('bp_activity_entry_comments',array($this,'list_stickers'));  
 	  add_action('bp_after_messages_compose_content',array($this,'list_stickers')); 
-      add_action('bp_after_message_reply_box',array($this,'list_stickers')); 	  
+      add_action('bp_after_message_reply_box',array($this,'list_stickers'));
+      add_action('wp_ajax_bp_sticker_ajax',array($this,'bp_sticker_ajax'));
+      add_action( 'wp_ajax_nopriv_bp_sticker_ajax',array($this, 'bp_sticker_ajax') );    
 	 add_filter( 'bp_get_activity_latest_update',array($this, 'bp_st_translate_sticker')); 
 	 add_filter( 'bp_get_activity_latest_update_excerpt',array($this, 'bp_st_translate_sticker')); 
 	 add_filter( 'bp_get_activity_content_body',array($this, 'bp_st_translate_sticker'));
@@ -62,20 +64,27 @@ public static function get_instance(){
 public static function list_stickers($message){
 	global $bp;	
 	  $html ="<span class='bp-smiley-button'>
-	  <a class='buddypress-smiley-button' rel='nofollow'></a>
+	  <a class='buddypress-smiley-button'  ><i class='dashicons dashicons-smiley'></i></a>
 	  </span>
-	  <div class='smiley-buttons'style='display: none;'>"; 
-	 
-	 
-	foreach (self::replace_with_st() as $codes => $imgs) {     
+	  <span class='bp-smiley-no'>
+	  <a class='buddypress-smiley-button' ><i class='dashicons dashicons-no'></i></a>
+	  </span><div id='sl' ></div>"; 
+     echo apply_filters( 'list_stickers',$html);	
+    }
+
+function bp_sticker_ajax(){
+    $html ="<div class='divsti' >"; 
+    foreach (self::replace_with_st() as $codes => $imgs) {     
 		 $filename =  preg_replace('/.[^.]*$/', '', $codes);
 		 $icon = BPST_PLUGIN_URL. 'images/sticons/'. $imgs.'';
 		 $html.="<img src='$icon' data-code=':$filename:' class='smiley' /> ";
-          }	
+        }	
 	 $html .="</div>"; 
-     echo apply_filters( 'list_stickers',$html);	
-    }
-	
+     echo  $html;
+ 	wp_die( );  
+}
+
+
 function replace_with_st(){ 
 $dir = BPST_PLUGIN_DIR."images/sticons/";
 if ($opendir = opendir($dir)) { 
@@ -96,7 +105,7 @@ function bp_st_translate_sticker( $content) {
 	  $filename = preg_replace('/.[^.]*$/', '', $codes);
 	  $icon = BPST_PLUGIN_URL. 'images/sticons/'. $imgs.'';
            $code[] =":$filename:";
-           $img[] = "<img src='$icon' class='smiley' /> ";					
+           $img[] = "<img src='$icon' class='st-smiley'/> ";					
         }
         $icons = str_replace($code, $img, $content);
         return $icons;

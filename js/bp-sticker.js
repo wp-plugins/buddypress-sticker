@@ -46,7 +46,30 @@ jq('.smiley').live('click',function(){
 
 });
 
-		jQuery('.bp-smiley-button').live('click', function(){
-			jQuery(this).toggleClass('active').next().slideToggle('fast');		
+		$('.bp-smiley-button').live('click', function(){
+		
+	    $(this).hide();
+		$('.bp-smiley-no').show();
+		  $.ajax({
+     url: ajaxurl,
+	 type: 'post',
+	 data: {'action': 'bp_sticker_ajax' },
+	 beforeSend:  function() {                              
+				//$('#loading').addClass('bpci-loading');
+            },		
+            success: function (html) {
+                  $('#loading').removeClass('bpci-loading');
+				  $('#sl').toggleClass ('smiley-buttons')
+                  $(".smiley-buttons").html(html);
+				  $(".bp-smiley-no").click(function() {                       
+                         $(".divsti").remove();	
+						 $('.bp-smiley-button').show();
+						 $('.bp-smiley-no').hide();
+						  $('#sl').removeClass ('smiley-buttons')
+						 });
+				 
+				  
+				  }
+			});
 	});	
 })(jQuery);
