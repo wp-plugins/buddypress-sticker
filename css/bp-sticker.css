@@ -1,0 +1,54 @@
+.smiley{
+display: inline !important;
+border: medium none !important;
+box-shadow: none !important;
+height: 2em !important;
+
+margin: 0px 0.07em !important;
+vertical-align: -0.1em !important;
+background: none repeat scroll 0% 0% transparent !important;
+
+}
+.bp-smiley-button .buddypress-smiley-button{
+	padding: 15px;	
+  background: url('../images/sticon.png') no-repeat  ;
+  float: right;
+  margin-top: 5px;
+
+
+
+}
+
+.smiley-buttons {
+background: #fafafa;
+border: 1px solid #ddd;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+display: none;
+margin: 10px 40px 15px 0;
+padding: 2px 19px 1px;
+max-height: 150px !important;  
+overflow-y: auto !important;
+}
+
+.smiley-buttons a {
+-webkit-transition: color .2s;
+-moz-transition: color .2s;
+-o-transition: color .2s;
+transition: color .2s;
+font-size: 26px !important;
+overflow: hidden;
+line-height: 1.5 !important;
+padding: 0px !important;
+margin-right: 5px;
+text-decoration: none;
+}
+
+.smiley-buttons a:hover {
+-webkit-transition: color .2s;
+-moz-transition: color .2s;
+-o-transition: color .2s;
+transition: color .2s;
+text-decoration: none;
+}
