@@ -3,7 +3,7 @@ Contributors: aghajoon
 Tags: BuddyPress, activity, Sticker, message
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 
 BuddyPress stickers Allow Users to add stickers in activity posts and message by clicking on icons
 
@@ -34,6 +34,9 @@ if need more sticker, you can go to cpanel and upload custom sticker in bp-stick
 2. sticker
 
 == Changelog ==
+= 1.3.0 =
+- Fixed ajax load stickers in comment.
+- Fixed css .
 
 = 1.2.0 =
 - Adedd ajax load stickers.

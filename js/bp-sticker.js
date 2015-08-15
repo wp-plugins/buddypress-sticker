@@ -53,12 +53,8 @@ jq('.smiley').live('click',function(){
 		  $.ajax({
      url: ajaxurl,
 	 type: 'post',
-	 data: {'action': 'bp_sticker_ajax' },
-	 beforeSend:  function() {                              
-				//$('#loading').addClass('bpci-loading');
-            },		
-            success: function (html) {
-                  $('#loading').removeClass('bpci-loading');
+	 data: {'action': 'bp_sticker_ajax' },	
+            success: function (html) {                
 				  $('#sl').toggleClass ('smiley-buttons')
                   $(".smiley-buttons").html(html);
 				  $(".bp-smiley-no").click(function() {                       
@@ -72,4 +68,40 @@ jq('.smiley').live('click',function(){
 				  }
 			});
 	});	
+	
+	
+		$('.bp-smiley-button-comment').live('click', function(event){	   
+            var elem_var = String(jQuery(this).attr('rel')).split('_');           
+            var elemID = elem_var[1];
+		$('.bp-smiley-button-comment').hide();
+		$('.bp-smiley-no-comment').show();
+
+   $.ajax({
+     url: ajaxurl,
+	 type: 'post',
+	 data: {'action': 'bp_sticker_ajax' },
+        success:function (html) {
+                  //$('#loading').removeClass('bpci-loading');
+				  $('.sl-' + elemID + '-comm').addClass ('smiley-buttons')
+                  $(".smiley-buttons").html(html);
+				  $(".bp-smiley-no-comment").click(function() {                       
+                         $(".divsti").remove();	
+						 $('.bp-smiley-button-comment').show();
+						 $('.bp-smiley-no-comment').hide();
+						  $('.sl-' + elemID + '-comm').removeClass ('smiley-buttons')
+						 });
+				 $(".acomment-reply").click(function() {                       
+                         $(".divsti").remove();	
+						 $('.bp-smiley-button-comment').show();
+						 $('.bp-smiley-no-comment').hide();
+						  $('.sl-' + elemID + '-comm').removeClass ('smiley-buttons')
+				});
+				 
+				  
+				  }
+     }); 
+
+	});
+
+
 })(jQuery);
