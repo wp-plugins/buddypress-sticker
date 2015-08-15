@@ -1,0 +1,84 @@
+
+
+.smiley{
+display: inline !important;
+border: medium none !important;
+box-shadow: none !important;
+height: 4em !important;
+cursor: pointer;
+margin: 0px 0.07em !important;
+vertical-align: -0.1em !important;
+background: none repeat scroll 0% 0% transparent !important;
+padding: 3px;
+
+}
+.st-smiley{
+display: inline !important;
+border: medium none !important;
+box-shadow: none !important;
+height: 2em !important;
+margin: 0px 0.07em !important;
+vertical-align: -0.1em !important;
+background: none repeat scroll 0% 0% transparent !important;
+padding: 3px;
+
+}
+.bp-smiley-button .buddypress-smiley-button,.bp-smiley-no .buddypress-smiley-button{
+	padding: 2px;	
+  border: 1px solid #ddd;
+  border-radius: 100px;
+  float: right;
+  text-decoration: none;
+  cursor: pointer;
+}
+.bp-smiley-button .dashicons-smiley,.bp-smiley-no .dashicons-no{
+  float: right;
+
+}
+.bp-smiley-no .dashicons-no{
+  margin-top:2px;
+
+}
+.bp-smiley-button, .bp-smiley-no{
+ 
+  margin-left:5px;
+}
+
+.bp-smiley-no{
+display:none;
+}
+.divsti{
+  background-color:rgba(183, 197, 231, 0.1);
+  padding: 5px 5px 5px 5px;
+}
+.smiley-buttons {
+  float: left;
+ 
+margin:10px auto;
+padding: 2px 2px 2px 2px;
+max-height: 150px !important;  
+overflow-y: auto !important;
+  border:1px solid #ddd;
+}
+
+
+.smiley-buttons a {
+-webkit-transition: color .2s;
+-moz-transition: color .2s;
+-o-transition: color .2s;
+transition: color .2s;
+font-size: 26px !important;
+overflow: hidden;
+line-height: 1.5 !important;
+padding: 0px !important;
+margin-right: 5px;
+text-decoration: none;
+}
+
+.smiley-buttons a:hover {
+-webkit-transition: color .2s;
+-moz-transition: color .2s;
+-o-transition: color .2s;
+transition: color .2s;
+text-decoration: none;
+}
